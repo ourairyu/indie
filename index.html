@@ -87,7 +87,9 @@
   </head>
   
   
-  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+  
+  <body class="Page has-headerImage" itemscope itemtype="http://schema.org/WebPage">
     <header class="Page-header">
   <div class="navbar navbar-static-top">
     <div class="container">
@@ -126,13 +128,30 @@
 </header>
 
 <main class="Page-content">
-  <article class="Homepage">
-    <header class="Homepage-header">
-      <h1>欧雷的独立开发实验</h1>
-      <p class="Homepage-slogan">记录我的独立开发之路</p>
-      <p class="GetStarted"><a href="/about/">了解详情<i class="fa fa-long-arrow-right"></i></a></p>
-    </header>
-  </article>
+  
+  <!-- 页面横幅 -->
+  <div class="Page-banner hidden-xs" style="background-image: url('/images/local/banners/1988.jpg');">
+    <figure class="sr-only">
+      <img src="/images/local/banners/1988.jpg" alt="">
+      <figcaption></figcaption>
+    </figure>
+  </div>
+
+
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header HomeHeader">
+        <div>
+          <h1 class="Article-title HomeHeader-title">欧雷的独立开发实验</h1>
+          <p class="HomeHeader-slogan">记录我的独立开发之路</p>
+        </div>
+      </header>
+      <div class="Article-content">
+        
+        
+      </div>
+    </article>
+  </div>
 </main>
 <footer class="Page-footer Footer">
   <div class="container">

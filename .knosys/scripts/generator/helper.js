@@ -1,6 +1,6 @@
 const { existsSync } = require('fs');
 
-const { noop } = require('@ntks/toolbox');
+const { isArray, noop } = require('@ntks/toolbox');
 const { dump } = require('js-yaml');
 
 const {
@@ -12,6 +12,10 @@ const {
 } = require('../helper');
 
 const METADATA_IMAGE_KEYS = ['banner', 'avatar', 'thumbnail', 'cover', 'logo'];
+
+function isItemValid(item) {
+  return isArray(item.tags) && item.tags.indexOf('indie-dev') > -1;
+}
 
 function getItemSourceDir(sourceRootPath, metadata) {
   return `${sourceRootPath}/${metadata.source}`;
@@ -260,4 +264,4 @@ function createGenerator(sourceRootPath, sharedRootPath, collectionName, opts) {
   });
 }
 
-module.exports = { getItemSourceDir, cacheClassifyItems, getCollectionRoot, createGenerator };
+module.exports = { isItemValid, getItemSourceDir, cacheClassifyItems, getCollectionRoot, createGenerator };

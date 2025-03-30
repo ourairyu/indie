@@ -2,7 +2,7 @@ const { resolve: resolvePath } = require('path');
 const { existsSync } = require('fs');
 
 const { resolveRootPath, scanAndSortByAsc, ensureDirExists, getLocalDataRoot } = require('../helper');
-const { createProjectGenerator } = require('../generator');
+const { createDailyGenerator, createProjectGenerator } = require('../generator');
 
 module.exports = {
   execute: dataSource => {
@@ -18,6 +18,7 @@ module.exports = {
     const sharedRootPath = resolvePath(srcPath, 'shared');
 
     const generators = {
+      dailies: createDailyGenerator(sourceRootPath, sharedRootPath),
       projects: createProjectGenerator(sourceRootPath, sharedRootPath),
     };
 

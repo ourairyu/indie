@@ -1,7 +1,7 @@
-const { isArray, noop, pick } = require('@ntks/toolbox');
+const { noop, pick } = require('@ntks/toolbox');
 
 const { sortByDate, readData, readMetadata } = require('../helper');
-const { getItemSourceDir, createGenerator } = require('./helper');
+const { isItemValid, getItemSourceDir, createGenerator } = require('./helper');
 
 const collectionName = 'projects';
 
@@ -9,7 +9,7 @@ function resolveItemData(sourceRootPath, id, item) {
   const sourceDir = getItemSourceDir(sourceRootPath, item);
   const project = { ...readMetadata(sourceDir), id };
 
-  if (!isArray(project.tags) || project.tags.indexOf('indie-dev') === -1) {
+  if (!isItemValid(project)) {
     return null;
   }
 
@@ -23,7 +23,7 @@ function resolveItemData(sourceRootPath, id, item) {
     project.tasks = project.tasks.map(task => ({ ...task, status: task.status || 'waiting' }));
   }
 
-  return pick(project, ['id', 'title', 'date', 'git', 'links', 'tasks', 'share', 'sharedAt','']);
+  return pick(project, ['id', 'title', 'description', 'date', 'tags', 'period', 'git', 'links', 'tasks', 'share', 'sharedAt']);
 }
 
 module.exports = {

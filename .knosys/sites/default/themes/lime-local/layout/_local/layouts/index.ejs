@@ -13,7 +13,7 @@
         <h2>实验动态</h2>
         <ul>
           <% const dailyData = site.data['knosys/dailies'] %>
-          <% dailyData.sequence.forEach(id => { %>
+          <% dailyData.sequence.slice().reverse().forEach(id => { %>
             <% const daily = dailyData.items[id] %>
             <li><time datetime="<%= date_xml(daily.date) %>" style="margin-right: 1em;"><span><%= date(daily.date, 'YYYY-MM-DD') %></span></time><a href="https://s.ourai.ws/dailies/<%= id %>/" target="_blank" rel="external" title="<%= daily.description %>"><%= daily.title %></a></li>
           <% }) %>
@@ -22,7 +22,7 @@
         <% if (projectData.sequence.length > 0) { %>
           <h2>进行中项目</h2>
           <ul>
-            <% projectData.sequence.forEach(id => { %>
+            <% projectData.sequence.slice().reverse().forEach(id => { %>
               <li><a href="https://s.ourai.ws/projects/<%= id %>/" target="_blank" rel="external"><%= projectData.items[id].title %></a></li>
             <% }) %>
           </ul>
